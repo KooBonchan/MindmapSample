@@ -1,7 +1,6 @@
 .board{
     background-color: lightgrey;
     min-height: 400px;
-    max-height: calc(100%-120px);
 }
 .root{
     min-height:20px;
