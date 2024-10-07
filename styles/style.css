@@ -8,5 +8,11 @@ html, body{
 
 main{
     flex:1;
+
+}
+
+.card.node {
+    margin-left: 1rem;
+    margin-right: 1rem;
     
 }
