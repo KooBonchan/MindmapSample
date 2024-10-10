@@ -9,7 +9,8 @@ class CytoHelper{
             group:'nodes',
             data: {id:a, label:a}
         });
-        cy.layout().run();
+        cy.center(a);
+        layout.run()
     }
     addNodeTo(dest, src){
         cy.add({
@@ -20,7 +21,8 @@ class CytoHelper{
             group: 'edges',
             data: {source: src, target: dest}
         });
-        cy.layout({name:'concentric',rows:'1'}).run();
+        cy.center(dest);
+        layout.run()
     }
 }
 
@@ -71,8 +73,10 @@ const cy = cytoscape({
     ],
 
     layout: {
-        name: 'concentric',
+        name: 'random',
         rows: 1
     }
+    
 });
 const helper = new CytoHelper();
+var layout = cy.layout({name:'random',rows:'1'})
