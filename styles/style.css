@@ -68,8 +68,42 @@ a{
 .node-deck{
     background-color: #ccc;
     grid-area:aside;
+    display:flex;
+    flex-direction: column;
 }
 .root-deck{
     background-color: #999;
     grid-area:bot;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: left;
+}
+
+.node.card{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    margin-top:10px;
+    display:flex;
+    justify-content: left;
+    align-items: center;
+}
+.node.card#add-node{
+    font-size:30px;
+    line-height:30px;
+    i{
+        color:#666
+    }
+}
+
+.root.card{
+    margin:20px 5px;
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: #eee 0 0 20px -3px;
+    border-radius: 3px;
 }
