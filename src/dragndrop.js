@@ -1,3 +1,5 @@
+window.onload = ()=>{
+
 const cards = document.querySelectorAll('.node');
 const board = document.querySelector('#board');
 
@@ -7,9 +9,10 @@ class CytoHelper{
     addNode(a){
         cy.add({
             group:'nodes',
-            data: {id:a, label:a}
-        });
-        cy.center(a);
+            data: {id:a, label:a.toUpperCase()}
+        })
+
+        cy.center(cy.getElementById(a));    
         layout.run()
     }
     addNodeTo(dest, src){
@@ -26,7 +29,7 @@ class CytoHelper{
     }
 }
 
-
+console.log(cards.length);
 cards.forEach((card) => {
     card.addEventListener('dragstart', e=>{
         e.dataTransfer.setData('text/plain', card.id);
@@ -44,8 +47,12 @@ board.addEventListener('dragover', e=>{
 board.addEventListener('drop', e =>{
     e.preventDefault();
     const cardId = e.dataTransfer.getData('text/plain');
-    helper.addNode(cardId);
     console.log(cardId);
+    if(cardId !== undefined && cardId.length > 0){
+        helper.addNode(cardId);
+        console.log(cardId);
+    }
+    
 })
 
 const cy = cytoscape({
@@ -64,7 +71,7 @@ const cy = cytoscape({
         {
             selector: 'edge',
             style: {
-                'line': '#cccccc',
+                'border-color':'#cccccc',
                 'width': 3,
                 'target-arrow-color': '#cccccc',
                 'target-arrow-shape': 'triangle',
@@ -80,3 +87,5 @@ const cy = cytoscape({
 });
 const helper = new CytoHelper();
 var layout = cy.layout({name:'random',rows:'1'})
+
+}
