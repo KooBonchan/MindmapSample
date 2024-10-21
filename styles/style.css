@@ -8,6 +8,9 @@ a{
     text-decoration: none;
     display:block;
 }
+html,body{
+    overflow:hidden;
+}
 
 .container{
     display:grid;
@@ -51,6 +54,7 @@ a{
 }
 .btn a{
     display:block;
+    cursor:pointer;
 }
 .btn a i{
     width:38px;
@@ -89,7 +93,7 @@ a{
     justify-content: left;
     align-items: center;
 }
-.node.card#add-node{
+.node.card#add-node, .root.card#add-root{
     font-size:30px;
     line-height:30px;
     i{
@@ -104,6 +108,7 @@ a{
     display:flex;
     justify-content: center;
     align-items: center;
+    margin-top:5px;
     box-shadow: #eee 0 0 20px -3px;
     border-radius: 3px;
 }

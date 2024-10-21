@@ -6,8 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <script src="src/dragndrop.js"></script>
     <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <script src="src/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -19,8 +19,10 @@
                 <div class="btn"><a>
                     <i class="fa-solid fa-bars"></i>
                 </a></div>
-                <div class="btn"><a>
-                    <i class="fa-solid fa-file-import"></i>
+                <div class="btn" id="btn-upload"
+                    help="
+                  "><a>
+                    <i class="fa-solid fa-upload"></i>
                 </a></div>
             </div>
             <div id="right-btn-box" class="btn-box">
@@ -56,6 +58,10 @@
             </div>
         </div>
     </div>
-    
+    <input type="file" id="json-file-input" accept=".json" style="display: none;">
+
+    <script src="src/dragndrop.js"></script>
+    <script src="src/fileio.js"></script>
+    <script src="src/tooltips.js"></script>
 </body>
 </html>

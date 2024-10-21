@@ -1,5 +1,3 @@
-window.onload = ()=>{
-
 const cards = document.querySelectorAll('.node');
 const board = document.querySelector('#board');
 
@@ -24,12 +22,10 @@ class CytoHelper{
             group: 'edges',
             data: {source: src, target: dest}
         });
-        cy.center(dest);
+        cy.center(cy.getElementById(dest));
         layout.run()
     }
 }
-
-console.log(cards.length);
 cards.forEach((card) => {
     card.addEventListener('dragstart', e=>{
         e.dataTransfer.setData('text/plain', card.id);
@@ -47,10 +43,8 @@ board.addEventListener('dragover', e=>{
 board.addEventListener('drop', e =>{
     e.preventDefault();
     const cardId = e.dataTransfer.getData('text/plain');
-    console.log(cardId);
     if(cardId !== undefined && cardId.length > 0){
         helper.addNode(cardId);
-        console.log(cardId);
     }
     
 })
@@ -87,5 +81,3 @@ const cy = cytoscape({
 });
 const helper = new CytoHelper();
 var layout = cy.layout({name:'random',rows:'1'})
-
-}
