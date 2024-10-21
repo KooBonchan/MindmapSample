@@ -75,6 +75,21 @@ html,body{
     display:flex;
     flex-direction: column;
 }
+.node-deck ul{
+    width:100%;
+}
+
+
+.node.card{
+    width: 100%;
+    height:25px;
+    line-height:25px;
+    font-size:20px;
+    padding-left:10px;
+    background-color: #fff;
+    margin-top:10px;
+}
+
 .root-deck{
     background-color: #999;
     grid-area:bot;
@@ -83,24 +98,13 @@ html,body{
     justify-content: left;
     gap:5px;
 }
-
-.node.card{
-    width:100px;
-    height:50px;
-    background-color: #fff;
-    margin-top:10px;
-    display:flex;
-    justify-content: left;
-    align-items: center;
-}
-.node.card#add-node, .root.card#add-root{
+.root.card#add-root{
     font-size:30px;
     line-height:30px;
     i{
         color:#666
     }
 }
-
 .root.card{
     width:100px;
     height:50px;

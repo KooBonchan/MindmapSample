@@ -36,13 +36,20 @@
             </div>
         </div>
         <div class="node-deck">
-            <div class="node card" draggable="true" id="card0"></div>
-            <div class="node card" draggable="true" id="card1"></div>
-            <div class="node card" draggable="true" id="card2"></div>
-            <div class="node card" draggable="true" id="card3"></div>
-            <div class="node card" id="add-node">
-                <i class="fa-solid fa-circle-plus"></i>
-            </div>
+            <ul class="tree-level1">
+                <li>
+                    <div class="node card" draggable="true" id="card0">Metal</div>        
+                </li>
+                <li>
+                    <div class="node card" draggable="true" id="card1">Funk</div>
+                    <ul>
+                        <li><div class="node card" draggable="true" id="card2"></div></li>
+                        <li><div class="node card" draggable="true" id="card3"></div></li>
+                    </ul>
+                </li>
+                <li></li>
+
+            </ul>
         </div>
         <div id="board">
     
@@ -63,5 +70,6 @@
     <script src="src/dragndrop.js"></script>
     <script src="src/fileio.js"></script>
     <script src="src/tooltips.js"></script>
+    
 </body>
 </html>
