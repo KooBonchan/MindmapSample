@@ -1,31 +1,6 @@
 const cards = document.querySelectorAll('.node');
 const board = document.querySelector('#board');
 
-class CytoHelper{
-    
-    CytoHelper(){}
-    addNode(a){
-        cy.add({
-            group:'nodes',
-            data: {id:a, label:a.toUpperCase()}
-        })
-
-        cy.center(cy.getElementById(a));    
-        layout.run()
-    }
-    addNodeTo(dest, src){
-        cy.add({
-            group:'nodes',
-            data: {id:dest, label:dest}
-        });
-        cy.add({
-            group: 'edges',
-            data: {source: src, target: dest}
-        });
-        cy.center(cy.getElementById(dest));
-        layout.run()
-    }
-}
 cards.forEach((card) => {
     card.addEventListener('dragstart', e=>{
         e.dataTransfer.setData('text/plain', card.id);
@@ -40,15 +15,22 @@ board.addEventListener('dragover', e=>{
     e.preventDefault();
 });
 
+let latestNodeId;
+
 board.addEventListener('drop', e =>{
     e.preventDefault();
     const cardId = e.dataTransfer.getData('text/plain');
     if(cardId !== undefined && cardId.length > 0){
-        helper.addNode(cardId);
+        let node = addNode(cardId);
+        latestNodeId = cardId;
     }
     
 })
 
+
+const RandomLayoutJson = {
+    name: 'grid'
+}
 const cy = cytoscape({
     container: document.getElementById('board'),
     elements: [],
@@ -73,11 +55,28 @@ const cy = cytoscape({
         }
     ],
 
-    layout: {
-        name: 'random',
-        rows: 1
-    }
+    layout: RandomLayoutJson
     
 });
-const helper = new CytoHelper();
-var layout = cy.layout({name:'random',rows:'1'})
+
+
+
+let addNode = function(a){
+    cy.add({
+        group:'nodes',
+        data: {id:a, label:a.toUpperCase()}
+    })
+    let elem = cy.getElementById(a)
+    cy.center(elem);    
+    cy.layout(RandomLayoutJson).run()
+    return elem;
+}
+
+let connect = function (dest, src){
+    cy.add({
+        group: 'edges',
+        data: {source: src, target: dest}
+    });
+    // cy.center(dest);
+    cy.layout(RandomLayoutJson).run()
+}
