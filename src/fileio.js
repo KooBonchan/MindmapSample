@@ -72,6 +72,7 @@ function parseJsonToTree(target){
         if(target.children && Array.isArray(target.children)){
             tree.children = parseJsonToTree(target.children);
         }
+        return tree;
     })
 }
 
