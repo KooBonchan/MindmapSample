@@ -6,7 +6,8 @@ let tooltips = [
         tooltip:`
 1. <strong>JSON Data Only</strong>: Ensure the file is in valid JSON format.
 2. <strong>Tree-Shaped Structure</strong>: Data should follow a hierarchical structure.
-3. <strong>Required Fields</strong>: Only the "Title", "Description", and "Url" fields are mandatory.
+        ** Maximum tree depth is 4 **
+3. <strong>Required Fields</strong>: "Title","Description","Url","Child"
         `,
     },
 ]
