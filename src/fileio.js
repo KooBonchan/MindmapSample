@@ -1,3 +1,5 @@
+import {Tree, Subject} from './structure.js';
+
 document.getElementById('btn-upload').addEventListener('click', function(){
     document.getElementById('json-file-input').click();
 })
@@ -45,35 +47,21 @@ const sample = [
     }
 ];
 
-class Tree{
-    constructor(data){
-        this.data = data;
-        this.children = [];
-    }
-    addChild(subtree){
-        this.children.push(subtree)
-    }
-}
-class Subject{
-    constructor(title, description, url){
-        this.title = title ?? 'Untitled';
-        this.description = description ?? 'No Description';
-        this.url = url ?? 'about:blank';
-    }
-}
-
 function parseJsonToTree(target){
-    if ( ! target) return null;
-    if( ! Array.isArray(target)) target = [target];
+    function parseHelper(target, level){
+        if ( ! target) return null;
+        if( ! Array.isArray(target)) target = [target];
 
-    return target.map((v) => {
-        const subject = new Subject(v.title, v.description, v.url);
-        const tree = new Tree(subject);
-        if(target.children && Array.isArray(target.children)){
-            tree.children = parseJsonToTree(target.children);
-        }
-        return tree;
-    })
+        return target.map((v) => {
+            const subject = new Subject(v.title, v.description, v.url);
+            const tree = new Tree(subject);
+            if(target.children && Array.isArray(target.children)){
+                tree.children = parseJsonToTree(target.children);
+            }
+            return tree;
+        })
+    }
+    return parseHelper(target, 0)
 }
 
 function dealWithJson(){
